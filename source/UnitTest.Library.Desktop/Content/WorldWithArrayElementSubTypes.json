@@ -1,0 +1,320 @@
+{
+	"Name": {
+		"type": "string",
+		"value": "Test World"
+	},
+	"IsAwake": {
+		"type": "integer",
+		"value": 1
+	},
+	"Sectors": {
+		"type": "scope",
+		"class": "Sector",
+		"value": [
+			{
+				"type": "scope",
+				"class": "Sector",
+				"value": {
+					"IsAwake": {
+						"type": "integer",
+						"value": 1
+					},
+					"Name": {
+						"type": "string",
+						"value": "Sector A"
+					},
+					"Entities": {
+						"type": "scope",
+						"class": "Entity",
+						"value": [
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity A1"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 1
+									}
+								}
+							},
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity A2"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 0
+									}
+								}
+							},
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity A3"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 1
+									}
+								}
+							},
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity A4"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 0
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			{
+				"type": "scope",
+				"class": "Sector",
+				"value": {
+					"IsAwake": {
+						"type": "integer",
+						"value": 1
+					},
+					"Name": {
+						"type": "string",
+						"value": "Sector B"
+					},
+					"Entities": {
+						"type": "scope",
+						"class": "Entity",
+						"value": [
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity B1"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 0
+									}
+								}
+							},
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity B2"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 0
+									}
+								}
+							},
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity B3"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 0
+									}
+								}
+							},
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity B4"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 0
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			{
+				"type": "scope",
+				"class": "Sector",
+				"value": {
+					"IsAwake": {
+						"type": "integer",
+						"value": 0
+					},
+					"Name": {
+						"type": "string",
+						"value": "Sector C"
+					},
+					"Entities": {
+						"type": "scope",
+						"class": "Entity",
+						"value": [
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity C1"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 1
+									}
+								}
+							},
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity C2"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 1
+									}
+								}
+							},
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity C3"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 1
+									}
+								}
+							},
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity C4"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 1
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			{
+				"type": "scope",
+				"class": "Sector",
+				"value": {
+					"IsAwake": {
+						"type": "integer",
+						"value": 0
+					},
+					"Name": {
+						"type": "string",
+						"value": "Sector D"
+					},
+					"Entities": {
+						"type": "scope",
+						"class": "Entity",
+						"value": [
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity D1"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 1
+									}
+								}
+							},
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity D2"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 0
+									}
+								}
+							},
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity D3"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 1
+									}
+								}
+							},
+							{
+								"type": "scope",
+								"class": "Entity",
+								"value": {
+									"Name": {
+										"type": "string",
+										"value": "Entity D4"
+									},
+									"IsAwake": {
+										"type": "integer",
+										"value": 0
+									}
+								}
+							}
+						]
+					}
+				}
+			}
+		]
+	}
+}
