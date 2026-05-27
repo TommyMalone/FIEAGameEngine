@@ -1742,31 +1742,37 @@ namespace FIEAGameEngine
 	template<typename T>
 	void Datum::RemoveRangeTemplated(T * const& templatedPtr, size_t const& start, size_t const& finish)
 	{
-		if (mIsInternal)
+		if (start <= finish)
 		{
-			if (start < mSize && finish <= mSize)
+			if (mIsInternal)
 			{
-				if (mSize > 0 && start < finish)
+				if (start < mSize && finish <= mSize)
 				{
-
-					for (size_t i = start; i < finish; i++)
+					if (mSize > 0 && start < finish)
 					{
-						templatedPtr[i].~T();
+						for (size_t i = start; i < finish; i++)
+						{
+							templatedPtr[i].~T();
+						}
+						memmove(&(templatedPtr[start]), &(templatedPtr[finish]), (mSize - finish) * sizeof(T));
+						mSize -= (finish - start);
 					}
-					memmove(&(templatedPtr[start]), &(templatedPtr[finish]), (mSize - finish) * sizeof(T));
-					mSize -= (finish - start);
-
+				
+				}
+				else
+				{
+					throw exception(indexOutOfBoundsExceptionText.c_str());
 				}
 			}
 			else
 			{
-				throw exception(indexOutOfBoundsExceptionText.c_str());
+				throw exception(cannotMutateExternalStorageExceptionText.c_str());
 			}
 		}
 		else
 		{
-			throw exception(cannotMutateExternalStorageExceptionText.c_str());
+			throw exception(removeRangeInvalidParamExceptionText.c_str());
 		}
 	}
-#pragma endregion
+	#pragma endregion
 }

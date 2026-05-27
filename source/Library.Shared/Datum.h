@@ -21,22 +21,44 @@ namespace FIEAGameEngine
 	class RTTI;
 
 	/// <summary>
-	/// Datum is a runtime dynamically sized array.
-	/// It stores data of any of the supported types in contiguous memory.
-	/// When the datum is at capacity and an attempt to store and element in it is made the vector will resize itself, moving all of it's data to a new location in memory.
-	/// Datum may be set to overlay external memory. It may not be resized by any call except setting it's storage once more.
-	/// An external datum may alter the data it's interfacing, through Set methods, but again, it may not alter the size.
-	/// The type of datum may not be changed once it gains a type UNLESS it is set equal to a datum of another type.
-	/// (The datum to datum assignment operator is the only thing that can change a datum's type once it has been assigned.)
-	/// 
-	/// Types supported by datum:
-	/// int
-	/// float
-	/// glm::vec4
-	/// glm::mat4x4
-	/// Scope
-	/// string
-	/// RTTI*
+	/// Datum is a runtime-typed, dynamically sized array used as the value container
+	/// in Scope's hierarchical data model.
+	///
+	/// A Datum stores zero or more elements of a single active DatumType. In isolation,
+	/// it behaves like a homogeneous vector whose element type is chosen at runtime.
+	/// Once a Datum has been assigned a type, that type is fixed unless the Datum is
+	/// assigned from another Datum.
+	///
+	/// Datum supports two storage modes:
+	///
+	/// Internal storage:
+	/// - The Datum owns its memory.
+	/// - Capacity grows as needed when elements are appended.
+	/// - Reallocation may move the stored data to a new memory location.
+	///
+	/// External storage:
+	/// - The Datum overlays memory owned by another object.
+	/// - The Datum may read and modify the referenced values through Set methods.
+	/// - The Datum may not resize, reserve, append past capacity, or otherwise change
+	///   the size of the external storage.
+	/// - External storage may only be changed by assigning a new external storage block.
+	///
+	/// When stored inside a Scope, Datum becomes the value side of a string-keyed table
+	/// entry. Because Datum can store Scope pointers, Scope and Datum together form a
+	/// recursive hierarchical data structure: Scopes map names to Datum values, and
+	/// Datum values can represent either leaf data or child Scopes.
+	///
+	/// This makes Scope and Datum useful as a data-driven object model for parsed JSON,
+	/// scripted objects, entity attributes, and runtime-extensible game objects.
+	///
+	/// Supported Datum types:
+	/// - int
+	/// - float
+	/// - glm::vec4
+	/// - glm::mat4x4
+	/// - Scope*
+	/// - std::string
+	/// - RTTI*
 	/// </summary>
 	class Datum final
 	{
@@ -1214,7 +1236,7 @@ namespace FIEAGameEngine
 
 #pragma region ExceptionStrings
 		/// <summary>
-		/// Communicates the cause of an data lost on resize exception to the user.
+		/// Communicates the cause of a data lost on resize exception to the user.
 		/// </summary>
 		inline static const std::string newCapacityCannotBeSmallerThanCapacityExceptionText = "New capacity cannot be smaller than old vector capacity.\n";
 
@@ -1272,9 +1294,17 @@ namespace FIEAGameEngine
 		/// Communicates the cause of a storage preserved assignment type mismatch exception to the user.
 		/// </summary>
 		inline static const std::string storagePreservedAssignmentTypeMismatchExceptionText = "External datum cannot change it's type to match assigned datum.\n";
+		
+		/// <summary>
+		/// Communicates the cause of a remove range invalid parameter exception to the user.
+		/// </summary>
+		inline static const std::string removeRangeInvalidParamExceptionText = "Remove range finish index cannot be before start index.\n";
 #pragma endregion
 
-		//TODO: Implement default functions table
+		// TODO: Replace repeated DatumType switch dispatch with static member-function tables by implementing default functions table.
+		// Each table should map DatumType values to the type-specific helper used to construct,
+		// destroy, or copy elements of that type.
+
 		//using CreateDefaultFunction = void(Datum::*)(size_t index);
 		//static const CreateDefaultFunction CreateDefaultFunctions[static_cast<int>(DatumType::END)];
 
