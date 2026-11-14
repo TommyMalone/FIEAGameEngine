@@ -1,6 +1,6 @@
 # FIEA Game Engine
 
-A data-driven game engine core in C++17. I wrote it in 2019 as coursework in my graduate program at the Florida Interactive Entertainment Academy (FIEA) and extended it in 2020 with a family of red-black tree containers.
+A data-driven game engine core in C++17. I wrote it in 2019 as graduate coursework at the University of Central Florida’s Florida Interactive Entertainment Academy (FIEA) and extended it in 2020 with a family of red-black tree containers.
 
 The engine's idea is that game objects are described in data. A JSON file describes a world, the engine builds the objects it names through factories, and their behavior is a tree of actions that the file also describes. The C++ classes underneath can be read and changed by name at runtime, so script and code share one object model.
 
